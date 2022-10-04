@@ -17,15 +17,16 @@ class GamemodeChange implements Listener {
 
 # =====================================================================        
         $player = $event->getPlayer();
-        $world = $entity->getWorld();
+        $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $mtype = $this->main->cfg->get("message-type");
         $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
+        $gm = $event->getNewGamemode();
 # ===================================================================== 
 
         if($this->main->cfg->get("change-survival-clear") === true) {
             if(in_array($worldName, $this->main->cfg->get("creative-moderation-worlds", []))) {
-                if($event->getNewGamemode() === 0) {
+                if($gm === 0) {
                     $player->getInventory()->clearAll();
                     $player->getArmorInventory()->clearAll();
                 }

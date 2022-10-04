@@ -18,9 +18,10 @@ class ProjectileEvent implements Listener {
     public function onLaunch(ProjectileLaunchEvent $event) {
 
 # =====================================================================  
+        $player = $event->getPlayer();
         $entity = $event->getEntity();      
-        $player = $entity->getOwningEntity();
-        $world = $entity->getWorld();
+        $oentity = $entity->getOwningEntity();
+        $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $mtype = $this->main->cfg->get("message-type");
         $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
@@ -30,7 +31,7 @@ class ProjectileEvent implements Listener {
             if($player->isCreative()) {
                 if(in_array($worldName, $this->main->cfg->get("creative-moderation-worlds", []))) {
                     if($entity instanceof Arrow) {
-                        if($player instanceof Player) {
+                        if($oentity instanceof Player) {
                             $event->cancel();
                             if($mtype === "message") {
                                 $player->sendMessage($cnperms);

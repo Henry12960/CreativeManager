@@ -7,6 +7,7 @@ use pocketmine\event\Listener;
 
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\player\Player;
 
 class PvpEvent implements Listener {
 
@@ -17,7 +18,7 @@ class PvpEvent implements Listener {
     public function onDamage(EntityDamageEvent $event) {
 
 # =====================================================================        
-        $world = $entity->getWorld();
+        $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $mtype = $this->main->cfg->get("message-type");
         $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
