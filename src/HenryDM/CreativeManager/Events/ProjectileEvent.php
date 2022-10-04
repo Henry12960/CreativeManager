@@ -22,7 +22,7 @@ class ProjectileEvent implements Listener {
         $player = $entity->getOwningEntity();
         $world = $entity->getWorld();
         $worldName = $world->getFolderName();
-        $mtype = str_replace($this->main->cfg->get("message-type");
+        $mtype = $this->main->cfg->get("message-type");
         $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
 # =====================================================================
 
