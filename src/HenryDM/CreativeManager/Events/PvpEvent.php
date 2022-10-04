@@ -19,13 +19,15 @@ class PvpEvent implements Listener {
 # =====================================================================        
         $world = $entity->getWorld();
         $worldName = $world->getFolderName();
-        $mtype = $this->main->cfg->get("message-type");
-        $cnperms = $this->main->cfg->get("creative-no-perms");
+        $mtype = str_replace($this->main->cfg->get("message-type");
+        $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
 # ===================================================================== 
 
-        if($this->main->cfg->get("anti-pve") === true) {
+        if($this->main->cfg->get("anti-pvp") === true) {
             if($player->isCreative()) {
                 if($event instanceof EntityDamageByEntityEvent) {
+                    $damager = $event->getDamager();
+                    if(!$damager instanceof Player) return;
                     if(in_array($worldName, $this->main->cfg->get("creative-moderation-worlds", []))) {
                         $event->cancel();
                         if($mtype === "message") {

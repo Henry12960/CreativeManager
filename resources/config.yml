@@ -1,0 +1,39 @@
+---
+
+# ===================
+#  CREATIVE MANAGER 
+# ===================
+# 1. An advanced plugin to manage creative mode in your server!
+# 2. If you see errors, report here: https://github.com/Henry12960/CreativeManager/issues/new
+# 3. Plugin made by Henry Thierry [HenryDM] 
+# 4. Henry's Website: https://github.com/Henry12960
+
+# ===================
+#       GENERAL 
+# ===================
+# 1. You can use popup and message in 'message-type'
+# 2. You can use & to minecraft color codes and {line} to a new line in 'creative-no-perms'
+
+message-type: "popup"
+creative-no-perms: "&cYou can't do it in this gamemode!"
+
+creative-moderation-worlds: ["world", "AntiCreative"]
+
+# ===================
+#        FLAGS 
+# ===================
+# 1. All flags are disabled, define to true for activate
+# 2. if true 'change-survival-clear' clear all player inventory on change to survival!
+# 3. 'anti-interact' prevents player to open chests and more!
+
+anti-block-break: false
+anti-item-drop: false
+change-survival-clear: false
+
+anti-interact: false
+anti-block-place: false
+
+anti-bow: false
+anti-pvp: false
+
+...

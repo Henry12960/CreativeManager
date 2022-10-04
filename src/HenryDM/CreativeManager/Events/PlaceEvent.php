@@ -19,8 +19,8 @@ class PlaceEvent implements Listener {
         $player = $event->getPlayer();
         $world = $entity->getWorld();
         $worldName = $world->getFolderName();
-        $mtype = $this->main->cfg->get("message-type");
-        $cnperms = $this->main->cfg->get("creative-no-perms");
+        $mtype = str_replace($this->main->cfg->get("message-type");
+        $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
 # =====================================================================
 
         if($this->main->cfg->get("anti-block-place") === true) { 

@@ -5,16 +5,15 @@ namespace HenryDM\CreativeManager\Events;
 use HenryDM\CreativeManager\Main;
 use pocketmine\event\Listener;
 
-use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\block\BlockLegacyIds;
+use pocketmine\event\player\PlayerDropItemEvent;
 
-class InteractEvent implements Listener {
+class DropEvent implements Listener {
 
     public function __construct(private Main $main) {
         $this->main = $main;
     }
 
-    public function onInteract(PlayerInteractEvent $event) {
+    public function onDrop(PlayerDropItemEvent $event) {
 
 # =====================================================================        
         $player = $event->getPlayer();
@@ -22,27 +21,24 @@ class InteractEvent implements Listener {
         $worldName = $world->getFolderName();
         $mtype = str_replace($this->main->cfg->get("message-type");
         $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
-        $list = [BlockLegacyIds::CHEST, BlockLegacyIds::ENDER_CHEST, BlockLegacyIds::FURNACE, BlockLegacyIds::ANVIL, BlockLegacyIds::ITEM_FRAME_BLOCK];
 # =====================================================================
         
-        if($this->main->cfg->get("anti-interact") === true) {
+        if($this->main->cfg->get("anti-item-drop") === true) {
             if($player->isCreative()) {
                 if(in_array($worldName, $this->main->cfg->get("creative-moderation-worlds", []))) {
-                    if(in_array($block, $list)) {
-                        $event->cancel();
-                        if($mtype === "message") {
-                            $player->sendMessage($cnperms);
-                        }
+                    $event->cancel();
+                    if($mtype === "message") {
+                        $player->sendMessage($cnperms);
+                    }
                     
-                        if($mtype === "popup") {
-                            $player->sendPopup($cnperms);
-                        }
+                    if($mtype === "popup") {
+                        $player->sendPopup($cnperms);
                     }
                 }
             }
         } 
     }
-
+    
     public function getMain() : Main {
         return $this->main;
     }
