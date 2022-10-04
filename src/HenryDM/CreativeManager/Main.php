@@ -18,7 +18,7 @@ use HenryDM\CreativeManager\Events\BreakEvent;
 use HenryDM\CreativeManager\Events\GamemodeChange;
 use HenryDM\CreativeManager\Events\InteractEvent;
 use HenryDM\CreativeManager\Events\PlaceEvent;
-use HenryDM\CreativeManager\Events\ProjectileEvent;
+use HenryDM\CreativeManager\Events\DropEvent;
 use HenryDM\CreativeManager\Events\PvpEvent;
 
 class Main extends PluginBase implements Listener {  
@@ -38,7 +38,8 @@ class Main extends PluginBase implements Listener {
             GamemodeChange::class,
             InteractEvent::class,
             PlaceEvent::class,
-            PvpEvent::class
+            PvpEvent::class,
+            DropEvent::class
         ];
         foreach($events as $ev) {
             $this->getServer()->getPluginManager()->registerEvents(new $ev($this), $this);
