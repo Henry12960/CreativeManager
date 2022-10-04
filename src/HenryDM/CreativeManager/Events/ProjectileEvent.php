@@ -18,7 +18,6 @@ class ProjectileEvent implements Listener {
     public function onLaunch(ProjectileLaunchEvent $event) {
 
 # =====================================================================  
-        $player = $event->getPlayer();
         $entity = $event->getEntity();      
         $oentity = $entity->getOwningEntity();
         $world = $player->getWorld();
@@ -28,7 +27,7 @@ class ProjectileEvent implements Listener {
 # =====================================================================
 
         if($this->main->cfg->get("anti-bow") === true) { 
-            if($player->isCreative()) {
+            if($entity->isCreative()) {
                 if(in_array($worldName, $this->main->cfg->get("creative-moderation-worlds", []))) {
                     if($entity instanceof Arrow) {
                         if($oentity instanceof Player) {
