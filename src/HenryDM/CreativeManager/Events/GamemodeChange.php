@@ -23,7 +23,7 @@ class GamemodeChange implements Listener {
         $cnperms = str_replace(["{&}", "{line}"], ["§", "\n"], $this->main->cfg->get("creative-no-perms"));
 # ===================================================================== 
 
-    if($this->main->cfg->("change-survival-clear") === true) {
+    if($this->main->cfg->get("change-survival-clear") === true) {
         if(in_array($worldName, $this->main->cfg->get("creative-moderation-worlds", []))) {
             if($event->getNewGamemode() === 0) {
                 $player->getInventory()->clearAll();

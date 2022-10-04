@@ -1,6 +1,6 @@
 <?php
 
-namespace HenryDM\CreativeAdmin\Events;
+namespace HenryDM\CreativeManager\Events;
 
 use HenryDM\CreativeManager\Main;
 use pocketmine\event\Listener;
