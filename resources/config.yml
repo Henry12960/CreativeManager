@@ -32,8 +32,6 @@ change-survival-clear: false
 
 anti-interact: false
 anti-block-place: false
-
-anti-bow: false
 anti-pvp: false
 
 ...

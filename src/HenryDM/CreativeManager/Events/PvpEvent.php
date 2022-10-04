@@ -18,7 +18,7 @@ class PvpEvent implements Listener {
     public function onDamage(EntityDamageEvent $event) {
 
 # ===================================================================== 
-        $player = $event->getEntity();       
+        $player = $event->getPlayer();       
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $mtype = $this->main->cfg->get("message-type");

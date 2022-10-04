@@ -38,7 +38,6 @@ class Main extends PluginBase implements Listener {
             GamemodeChange::class,
             InteractEvent::class,
             PlaceEvent::class,
-            ProjectileEvent::class,
             PvpEvent::class
         ];
         foreach($events as $ev) {
