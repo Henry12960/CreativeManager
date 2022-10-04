@@ -18,8 +18,7 @@ class PvpEvent implements Listener {
     public function onDamage(EntityDamageEvent $event) {
 
 # ===================================================================== 
-        $entity = $event->getEntity();
-        $player = $event->getPlayer();       
+        $entity = $event->getEntity();      
         $world = $player->getWorld();
         $worldName = $world->getFolderName();
         $mtype = $this->main->cfg->get("message-type");
@@ -33,13 +32,6 @@ class PvpEvent implements Listener {
                     if(!$damager instanceof Player) return;
                     if(in_array($worldName, $this->main->cfg->get("creative-moderation-worlds", []))) {
                         $event->cancel();
-                        if($mtype === "message") {
-                            $player->sendMessage($cnperms);
-                        }
-                    
-                        if($mtype === "popup") {
-                            $player->sendPopup($cnperms);
-                        }
                     }
                 }
             }
