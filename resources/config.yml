@@ -17,7 +17,7 @@
 message-type: "popup"
 creative-no-perms: "&cYou can't do it in this gamemode!"
 
-creative-moderation-worlds: ["world", "AntiCreative"]
+creative-moderation-worlds: ["world", "lobby"]
 
 # ===================
 #        FLAGS 
